@@ -18,6 +18,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "noImplicitAny": true,
+    "types": ["jest", "@testing-library/jest-dom"],
     "plugins": [
       {
         "name": "next"
