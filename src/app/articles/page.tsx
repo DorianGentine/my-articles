@@ -1,11 +1,12 @@
 import React from "react"
+import { redirect } from "next/navigation"
+import Link from "next/link"
 
 import ArticleCard from "my-articles/app/articles/ArticleCard"
 import ModalButton from "my-articles/components/common/ModalButton"
 import { MODAL_NAMES } from "my-articles/constants/modal"
 import { config } from "my-articles/constants/config"
 import type { Article } from "my-articles/types/articles"
-import Link from "next/link"
 import Toast from "my-articles/components/common/Toast"
 
 export default async function Articles({
@@ -16,6 +17,10 @@ export default async function Articles({
   const { page = '1', deleted = 'false' } = await searchParams
   const pageInt = typeof page === 'string' ? parseInt(page, 10) : 1
   const { articles, totalPages }: {articles: Article[]; totalPages: number} = await fetch(`${config.api_url}articles?page=${page}`).then(res => res.json())
+
+  if(totalPages < pageInt) {
+    redirect('/articles')
+  }
 
   return (
     <>

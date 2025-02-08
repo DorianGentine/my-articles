@@ -5,17 +5,11 @@ interface AddArticleFormProps {
   onClose: (title?: string | React.MouseEvent) => void
 }
 
-const formatTime = (): string => {
-  const date = new Date()
-  const hours = String(date.getHours()).padStart(2, '0')
-  const minutes = String(date.getMinutes()).padStart(2, '0')
-  return `${hours}:${minutes}`
-}
 const initialState = { 
-  title: `La vie à ${formatTime()}`,
-  content: 'Il fait beau',
-  excerpt: 'beau',
-  author: 'Le D',
+  title: '',
+  content: '',
+  excerpt: '',
+  author: '',
   message: '',
   ok: undefined
 }
