@@ -50,12 +50,12 @@ export default async function Article({
         </form>
       </div>
       <Image
-        className='aspect-[1200/400] w-full object-cover mb-4 shadow-lg rounded'
+        className='aspect-[2] w-full object-cover mb-4 shadow-lg rounded'
         priority
         src={article?.hero}
         alt={article?.title}
         width={1200}
-        height={400}
+        height={600}
       />
       <h1 className='text-3xl font-bold mb-2'>{article?.title}</h1>
       <div className='text-gray-600 flex gap-2 mb-4'>
