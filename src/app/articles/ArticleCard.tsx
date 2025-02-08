@@ -11,7 +11,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   const { hero, title, excerpt, author, formattedDate } = article
 
   return (
-    <Link className="overflow-hidden rounded shadow-md hover:shadow-lg hover:-translate-y-1 hover:rotate-1 transition-all bg-gray-200" href={`/articles/${article._id}`}>
+    <Link role="article" className="overflow-hidden rounded shadow-md hover:shadow-lg hover:-translate-y-1 hover:rotate-1 transition-all bg-gray-200" href={`/articles/${article._id}`}>
       <Image
         className="aspect-[3] w-full object-cover"
         src={hero}
