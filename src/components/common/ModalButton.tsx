@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import React, { useCallback, useState } from "react"
-import Modal from "my-articles/components/common/Modal"
-import { MODAL_NAMES } from "my-articles/constants/modal"
+import React, { useCallback, useState } from 'react'
+import Modal from 'my-articles/components/common/Modal'
+import { MODAL_NAMES } from 'my-articles/constants/modal'
 
-import AddArticleForm from "my-articles/components/forms/AddArticleForm"
-import Contact from "my-articles/components/forms/ContactForm"
-import Toast from "my-articles/components/common/Toast"
+import AddArticleForm from 'my-articles/components/forms/AddArticleForm'
+import Contact from 'my-articles/components/forms/ContactForm'
+import Toast from 'my-articles/components/common/Toast'
 
 
 interface ModalButtonProps {
