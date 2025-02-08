@@ -1,101 +1,31 @@
-import Image from "next/image";
+import React from 'react'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="flex flex-col items-center justify-center min-h-72 bg-gray-100 p-4">
+      <h1 className="text-4xl font-bold mb-4 text-center">Bienvenue sur My Articles</h1>
+      <p className="text-lg text-gray-700 mb-8 text-center max-w-2xl">
+        Cette application a été développée dans le cadre d'un test technique. Elle utilise une stack, comprenant les technologies suivantes :
+      </p>
+      <ul className="list-disc list-inside text-lg text-gray-700 mb-8">
+        <li><strong>Next.js</strong> - Un framework React pour le rendu côté serveur et la génération de sites statiques.</li>
+        <li><strong>React</strong> - Une bibliothèque JavaScript pour construire des interfaces utilisateur.</li>
+        <li><strong>Tailwind CSS</strong> - Un framework CSS utilitaire pour un développement rapide et flexible.</li>
+        <li><strong>TypeScript</strong> - Un sur-ensemble typé de JavaScript qui améliore la qualité du code et la productivité des développeurs.</li>
+        ---------
+        <li><strong>Express</strong> - Un framework web minimaliste pour Node.js.</li>
+        <li><strong>MongoDB</strong> - Une base de données NoSQL flexible et évolutive.</li>
+        <li><strong>Mongoose</strong> - Une bibliothèque ODM (Object Data Modeling) pour MongoDB et Node.js.</li>
+        <li><strong>CORS</strong> - Un middleware pour permettre les requêtes cross-origin.</li>
+        <li><strong>dotenv</strong> - Un module pour charger les variables d'environnement à partir d'un fichier `.env`.</li>
+        <li><strong>morgan</strong> - Un middleware de journalisation des requêtes HTTP pour Node.js.</li>
+        <li><strong>multer</strong> - Un middleware pour la gestion des fichiers multipart/form-data.</li>
+        <li><strong>nodemailer</strong> - Un module pour envoyer des emails avec Node.js.</li>
+        <li><strong>nodemon</strong> - Un outil qui aide à développer des applications Node.js en redémarrant automatiquement l'application lorsque des fichiers sont modifiés.</li>
+      </ul>
+      <p className="text-lg text-gray-700 text-center max-w-2xl">
+        Explorez les différentes sections de l'application pour en savoir plus sur les articles et les fonctionnalités implémentées.
+      </p>
     </div>
-  );
+  )
 }

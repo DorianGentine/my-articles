@@ -1,7 +1,23 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  images: {
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co'
+      },
+    ],
+  },
+  devIndicators: {
+    appIsrStatus: false, // Disable the "ISR" indicator
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb'
+    },
+  },
+}
 
-export default nextConfig;
+export default nextConfig
