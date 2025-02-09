@@ -62,7 +62,7 @@ export default async function Articles({
           )}
         </div>
       )}
-      {deleted === 'true' && <Toast message="L'article a été supprimé" color='red' />}
+      {deleted === 'true' && <Toast message="L'article a été supprimé" error />}
     </>
   )
 }

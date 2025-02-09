@@ -5,11 +5,11 @@ const ANIMATION_DURATION = 300
 
 interface ToastProps {
   message: string
-  color?: string
+  error?: boolean
   onClose?: () => void
 }
 
-const Toast: React.FC<ToastProps> = ({ message, color = 'green', onClose }) => {
+const Toast: React.FC<ToastProps> = ({ message, error = false, onClose }) => {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -24,9 +24,9 @@ const Toast: React.FC<ToastProps> = ({ message, color = 'green', onClose }) => {
 
   return (
     <div
-      className={`fixed bottom-4 right-4 p-4 bg-${color}-600 text-white rounded shadow-lg transition-transform duration-${ANIMATION_DURATION} ${
+      className={`fixed bottom-4 right-4 p-4 text-white rounded shadow-lg transition-transform duration-${ANIMATION_DURATION} ${
         visible ? 'translate-x-0' : 'translate-x-[calc(100%+1rem)]'
-      }`}
+      } ${error ? 'bg-red-600' : 'bg-green-600'}`}
     >
       <div className="flex justify-between items-center">
         <span>{message}</span>
