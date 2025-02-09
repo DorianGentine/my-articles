@@ -24,7 +24,7 @@ export default async function Articles({
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
         <h1 className="font-bold text-2xl">Articles</h1>
         <ModalButton 
           text="Ajouter article" 
@@ -41,23 +41,21 @@ export default async function Articles({
         ))}
       </div>
       {totalPages > 1 && (
-        <div className="flex justify-center gap-4 mt-16">
+        <div className="flex justify-center mt-16">
           {pageInt > 1 && (
             <Link
-              type="button"
               href={`/articles${pageInt > 2 ? `?page=${pageInt - 1}` : ''}`}
-              className="py-1 px-4 bg-transparent border-green-500 border text-green-500 rounded hover:bg-green-700 hover:border-green-700 hover:text-green-100 transition"
+              className={`bg-green-300 hover:bg-green-400 text-green-800 font-bold py-1 px-4 ${pageInt < totalPages ? 'rounded-l' : 'rounded' }`}
             >
-              Page précédente
+              Précédent
             </Link>
           )}
           {pageInt < totalPages && (
             <Link
-              type="button"
               href={`/articles?page=${pageInt + 1}`}
-              className="py-1 px-4 bg-transparent border-green-500 border text-green-500 rounded hover:bg-green-700 hover:border-green-700 hover:text-green-100 transition"
-              >
-              Page suivante
+              className={`bg-green-300 hover:bg-green-400 text-green-800 font-bold py-1 px-4 ${pageInt > 1 ? 'rounded-r' : 'rounded'}`}
+            >
+              Suivant
             </Link>
           )}
         </div>
