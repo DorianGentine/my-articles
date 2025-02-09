@@ -26,39 +26,23 @@ export default async function Article({
   }
 
   return (
-    <div>
-      <div className='flex justify-between items-center mb-4'>
-        <Link 
-          href='/articles'
-          className='flex w-fit items-center gap-2 rounded bg-green-500 py-1 px-4 text-green-50 hover:bg-green-700 transition'
+    <div className='sm:px-16 md:px-32'>
+      <Link 
+        href='/articles'
+        className='mb-4 flex w-fit items-center gap-2 rounded bg-green-500 py-1 px-4 text-green-50 hover:bg-green-700 transition'
+      >
+        <svg
+          className='w-3 h-3'
+          fill='none'
+          stroke='currentColor'
+          strokeWidth='2'
+          viewBox='0 0 24 24'
+          xmlns='http://www.w3.org/2000/svg'
         >
-          <svg
-            className='w-3 h-3'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='2'
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path strokeLinecap='round' strokeLinejoin='round' d='M15 19l-7-7 7-7'></path>
-          </svg>
-          Retour
-        </Link>
-        <div className='flex gap-4 items-center'>
-          <ModalButton
-            text="Modifier" 
-            className="flex items-center gap-2 rounded bg-green-500 py-1 px-4 text-green-50 hover:bg-green-700 transition"
-            modalName={MODAL_NAMES.EDIT_ARTICLE}
-            modalProps={{ article }}
-          />
-          <form action={deleteArticle}>
-            <input type='hidden' name='articleId' value={id} />
-            <button type='submit' className='rounded border border-red-700 bg-white py-1 px-4 text-red-700 hover:bg-red-700 hover:text-red-50 transition'>
-              Supprimer l'article
-            </button>
-          </form>
-        </div>
-      </div>
+          <path strokeLinecap='round' strokeLinejoin='round' d='M15 19l-7-7 7-7'></path>
+        </svg>
+        Retour
+      </Link>
       <Image
         className='aspect-[2] w-full object-cover mb-4 shadow-lg rounded'
         priority
@@ -79,6 +63,20 @@ export default async function Article({
         {article?.author} · {article?.formattedDate}
       </div>
       <p className='text-base text-gray-700'>{article?.content}</p>
+      <div className='flex flex-col sm:flex-row gap-4 items-end justify-end mt-24'>
+          <ModalButton
+            text="Modifier" 
+            className="flex items-center gap-2 rounded bg-green-500 py-1 px-4 text-green-50 hover:bg-green-700 transition"
+            modalName={MODAL_NAMES.EDIT_ARTICLE}
+            modalProps={{ article }}
+          />
+          <form action={deleteArticle}>
+            <input type='hidden' name='articleId' value={id} />
+            <button type='submit' className='rounded border border-red-700 bg-white py-1 px-4 text-red-700 hover:bg-red-700 hover:text-red-50 transition'>
+              Supprimer
+            </button>
+          </form>
+        </div>
     </div>
   )
 }
