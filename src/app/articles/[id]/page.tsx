@@ -4,6 +4,8 @@ import { config } from 'my-articles/constants/config'
 import Link from 'next/link'
 import { deleteArticle } from 'my-articles/actions/article'
 import { notFound } from 'next/navigation'
+import ModalButton from 'my-articles/components/common/ModalButton'
+import { MODAL_NAMES } from 'my-articles/constants/modal'
 
 async function fetchArticle(id: string) {
   const res = await fetch(`${config.api_url}articles/${id}`)
@@ -42,12 +44,20 @@ export default async function Article({
           </svg>
           Retour
         </Link>
-        <form action={deleteArticle}>
-          <input type='hidden' name='articleId' value={id} />
-          <button type='submit' className='rounded border border-red-700 bg-white py-1 px-4 text-red-700 hover:bg-red-700 hover:text-red-50 transition'>
-            Supprimer l'article
-          </button>
-        </form>
+        <div className='flex gap-4 items-center'>
+          <ModalButton
+            text="Modifier" 
+            className="flex items-center gap-2 rounded bg-green-500 py-1 px-4 text-green-50 hover:bg-green-700 transition"
+            modalName={MODAL_NAMES.EDIT_ARTICLE}
+            modalProps={{ article }}
+          />
+          <form action={deleteArticle}>
+            <input type='hidden' name='articleId' value={id} />
+            <button type='submit' className='rounded border border-red-700 bg-white py-1 px-4 text-red-700 hover:bg-red-700 hover:text-red-50 transition'>
+              Supprimer l'article
+            </button>
+          </form>
+        </div>
       </div>
       <Image
         className='aspect-[2] w-full object-cover mb-4 shadow-lg rounded'

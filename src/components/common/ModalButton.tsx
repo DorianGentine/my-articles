@@ -7,15 +7,19 @@ import { MODAL_NAMES } from 'my-articles/constants/modal'
 import AddArticleForm from 'my-articles/components/forms/AddArticleForm'
 import Contact from 'my-articles/components/forms/ContactForm'
 import Toast from 'my-articles/components/common/Toast'
+import { Article } from 'my-articles/types/articles'
 
 
 interface ModalButtonProps {
   text: string
   className: string
   modalName: string
+  modalProps?: {
+    article?: Article
+  }
 }
 
-const ModalButton: React.FC<ModalButtonProps> = ({ text, className, modalName }) => {
+const ModalButton: React.FC<ModalButtonProps> = ({ text, className, modalName, modalProps }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
   const openModal = () => setIsModalOpen(true)
@@ -36,6 +40,7 @@ const ModalButton: React.FC<ModalButtonProps> = ({ text, className, modalName })
       </button>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         {modalName === MODAL_NAMES.ADD_ARTICLE && <AddArticleForm onClose={closeModal} />}
+        {modalName === MODAL_NAMES.EDIT_ARTICLE && <AddArticleForm onClose={closeModal} {...modalProps} />}
         {modalName === MODAL_NAMES.CONTACT && <Contact onClose={closeModal} />}
       </Modal>
       {toastMessage && <Toast message={toastMessage} onClose={closeToast} />}

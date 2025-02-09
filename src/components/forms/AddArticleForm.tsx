@@ -1,18 +1,6 @@
-import { createArticle } from 'my-articles/actions/article'
+import { createArticle, updateArticle } from 'my-articles/actions/article'
+import { Article } from 'my-articles/types/articles'
 import React, { useActionState, useEffect, useState } from 'react'
-
-interface AddArticleFormProps {
-  onClose: (title?: string | React.MouseEvent) => void
-}
-
-const initialState = { 
-  title: '',
-  content: '',
-  excerpt: '',
-  author: '',
-  message: '',
-  ok: undefined
-}
 
 const FileInput: React.FC<{ name: string}> = ({ name }) => {
   const [fileName, setFileName] = useState<string | null>(null)
@@ -37,12 +25,30 @@ const FileInput: React.FC<{ name: string}> = ({ name }) => {
     </div>
   )
 }
+const getButtonText = (isEdit: boolean, pending: boolean) => {
+  if(pending) return 'En cours...'
+  return isEdit ? 'Modifier' : 'Ajouter'
+}
 
-
-const AddArticleForm: React.FC<AddArticleFormProps> = ({ onClose }) => {
+const initialState = { 
+  title: '',
+  content: '',
+  excerpt: '',
+  author: '',
+  message: '',
+  ok: undefined
+}
+interface AddArticleFormProps {
+  onClose: (title?: string | React.MouseEvent) => void
+  article?: Article
+}
+const AddArticleForm: React.FC<AddArticleFormProps> = ({ onClose, article: iArticle }) => {
+  const article = {...initialState, ...iArticle}
+  const isEdit = !!article._id
+  const actionFn = isEdit ? updateArticle : createArticle
   const [state, action, pending] = useActionState(
-    createArticle,
-    initialState
+    actionFn,
+    article
   )
 
   useEffect(() => {
@@ -52,7 +58,14 @@ const AddArticleForm: React.FC<AddArticleFormProps> = ({ onClose }) => {
 
   return (
     <form action={action} className='p-4'>
-      <h2 className="text-xl font-semibold mb-4">Ajouter un nouvel article</h2>
+      <h2 className="text-xl font-semibold mb-4">{isEdit ? `Modifier: ${article.title}` : 'Ajouter un nouvel article'}</h2>
+      <input
+        type='text'
+        id='_id'
+        name='_id'
+        defaultValue={state ? state._id : undefined}
+        className='hidden'
+      />
       <div className='mb-4'>
         <label htmlFor='hero' className='block text-sm font-medium text-gray-700'>
           Image de l'article
@@ -127,7 +140,7 @@ const AddArticleForm: React.FC<AddArticleFormProps> = ({ onClose }) => {
           disabled={pending}
           className={`rounded bg-green-500 py-1 px-4 text-green-50 hover:bg-green-700 transition ${state.ok === false ? 'animate-wiggle' : ''}`}
         >
-          {pending ? 'En cours...' : 'Ajouter'}
+          {getButtonText(isEdit, pending)}
         </button>
       </div>
     </form>

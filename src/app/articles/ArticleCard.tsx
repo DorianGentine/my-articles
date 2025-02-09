@@ -19,13 +19,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
         width={600}
         height={200}
       />
-      <div className="px-6 py-4">
-        <div className="mb-2 text-xl font-bold my-0">{title}</div>
-        <p className="text-base text-gray-700">{excerpt}</p>
-      </div>
-      <div className="px-6 mb-6">
-        <p className="text-sm text-gray-600">By {author}</p>
-        <p className="text-sm text-gray-600">{formattedDate}</p>
+      <div className="px-6 py-4 flex flex-col justify-between gap-8">
+        <div>
+          <div className="mb-2 text-xl font-bold my-0">{title}</div>
+          <p className="text-base text-gray-700 line-clamp-2">{excerpt}</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-600">By {author}</p>
+          <p className="text-sm text-gray-600">{formattedDate}</p>
+        </div>
       </div>
     </Link>
   )
